@@ -1,26 +1,33 @@
-#  Как работать с репозиторием финального задания
+## Kittygram
 
-## Что нужно сделать
+Kittygram - социальная сеть для владельев котов, где они делятся фотографиями и достиженями своих питомцев
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+## Стек 
 
-## Как проверить работу с помощью автотестов
+#Python 3.9 #Django #Docker #REST Framework #Nginx #Pillow #Djoser #Gunicorn #Node.js
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
+# Запуск приложения
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+Для работы с БД Postgres требуется создать несколько переменных окружения:
+POSTGRES_DB=kittygram
+POSTGRES_USER=kittygram_user
+POSTGRES_PASSWORD=kittygram_password
+DB_HOST=db
+DB_PORT=5432
+SECRET_KEY=...
+На сервере необходимо установить утилиту Docker Compose: 
+sudo apt update
+sudo apt-get install docker-compose-plugin
+В директорию проекта копируем файл docker-compose.production.yml и запускаем Docker Compose: sudo docker сompose up
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+# URL проекта
 
-## Чек-лист для проверки перед отправкой задания
+Добавить питомца: POST /cats/add
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+Редактировать питомца: PUTCH /cats/edit
+
+Просмотр питомца: GET /cats/{cat_id}
+
+# Автор проекта
+
+Даниил Пастунов
