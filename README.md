@@ -30,4 +30,4 @@ sudo apt-get install docker-compose-plugin
 
 # Автор проекта
 
-Даниил Пастунов
+Пастунов Даниил
